@@ -1,0 +1,38 @@
+<main class="page projets-page">
+    <section class="portfolio-block project-no-images">
+        <div class="container">
+            <div class="heading">
+                <h2>Recent Work</h2>
+            </div>
+            <div class="row">
+                {{#each projects}}
+                <div class="col-md-6 col-lg-4">
+                    <div class="project-card-no-image">
+                        <h3>{{this.name}}</h3>
+                        <h4>{{#check this.description null}}No description given.{{else}}{{this.description}}{{/check}}
+                        </h4><a class="btn btn-outline-primary btn-sm" role="button" href="{{this.html_url}}">See
+                            More</a>
+                        <div class="progress mt-3">
+                            {{#each this.topLanguages}}
+                            <div class="progress-bar" aria-valuenow="{{this.percent}}" aria-valuemin="0"
+                                aria-valuemax="100" style="width: {{this.percent}}%; background-color: {{this.color}};">
+                                <span class="visually-hidden">{{this.percent}}%</span>
+                            </div>
+                            {{/each}}
+                        </div>
+                        <div
+                            style="text-align: center; margin-top: 5px; display: flex; flex-direction: row; justify-content: center; align-items: center; gap: 10px;">
+                            {{#each this.topLanguages}}
+                            <div
+                                style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background-color: {{this.color}};">
+                            </div>
+                            <span>{{this.language}}</span>
+                            {{/each}}
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </section>
+</main>
